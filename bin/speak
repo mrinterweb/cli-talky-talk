@@ -3,6 +3,6 @@
 require 'bundler/setup'
 require 'cli-talky-talk'
 
-extend CLITalkyTalk::ClassMethods
+extend CliTalkyTalk::ClassMethods
 
 speak

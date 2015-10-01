@@ -1,4 +1,4 @@
-module CLITalkyTalk
+module CliTalkyTalk
   def self.included(base)
     binding.pry
     base.extend(ClassMethods)

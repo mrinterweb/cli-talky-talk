@@ -5,7 +5,7 @@ require 'cli_talky_talk/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "cli-talky-talk"
-  spec.version       = CLITalkyTalk::VERSION
+  spec.version       = CliTalkyTalk::VERSION
   spec.authors       = ["Sean McCleary"]
   spec.email         = ["seanmcc@gmail.com"]
   spec.summary       = %q{Gives you a random spoken greeting}

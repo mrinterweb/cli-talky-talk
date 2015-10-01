@@ -1,4 +1,4 @@
-# Cli::Talky::Talk
+# CliTalkyTalk
 
 Ever find yourself checking the terminal to see if the last command you ran is finished? I do all the time so I wrote cli-talky-talk.
 
