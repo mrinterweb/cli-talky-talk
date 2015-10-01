@@ -1,3 +1,3 @@
-module CliTalkyTalk
-  VERSION = "0.0.2"
+class CliTalkyTalk
+  VERSION = "0.1.0"
 end

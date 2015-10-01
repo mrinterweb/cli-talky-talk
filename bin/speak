@@ -1,8 +1,32 @@
 #! /usr/bin/env ruby
 
+require 'optparse'
+require 'ostruct'
 require 'bundler/setup'
 require 'cli-talky-talk'
 
-extend CliTalkyTalk::ClassMethods
+options = OpenStruct.new
 
-speak
+OptionParser.new do |opts|
+  opts.banner = "Usage: speak [options]"
+  
+  # set defaults
+  options.debug = false
+
+  opts.on('-d', '--debug', 'debug mode') do
+    puts "setting debug true"
+    options.debug = true
+  end
+
+  opts.on('-s sentence', '--sentence sentence') do |sentence|
+    options.sentence = sentence
+  end
+
+  opts.on('-v voice', '--voice=voice', 'use specific voice') do |voice|
+    options.voice = voice
+  end
+
+end.parse!
+
+talker = CliTalkyTalk.new(options)
+talker.speak
