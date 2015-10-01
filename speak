@@ -1,0 +1,41 @@
+#! /usr/bin/env ruby
+# Some of the words are misspelled to help the say program pronounce them right
+#
+# copy the following line and paste for fun!
+#   curl -O https://gist.githubusercontent.com/mrinterweb/0ed2ac30a97e25e03fad/raw/e56fdb4940e0222f45cc6255c6673ffccce9acef/speak.rb && mv speak.rb talk && chmod a+x speak && ./speak
+
+# get a list of all possible voices
+voices = `say -v \?`.split("\n").select { |v| v =~ /en_US/ }.map { |v| v.gsub(/\s+en_US.*$/,"")}
+greetings = [
+  'ahoy', 
+  'greeting',
+  'saalutations',
+  'waazame',
+  'bleep booop',
+  'exceslior',
+  'land hoe',
+  'hail',
+]
+names = [
+  `whoami`.chomp,
+  'Govna',
+  'captain',
+  'boss',
+  'cheef',
+  'over loard',
+  'dragon commander',
+  'your excellence',
+  'exhaulted one',
+]
+statuses = [
+  'all done here',
+  'works done',
+  'bingo!',
+  'hazaa',
+  'flip Yeah',
+  'get back to work',
+  'all systems go',
+]
+r = ->(arr) { arr.sample }
+str = "#{r[greetings]}, #{r[names]}!   #{r[statuses]}"
+`say -v#{r[voices]} #{str}`

@@ -1,0 +1,8 @@
+#! /usr/bin/env ruby
+
+require 'bundler/setup'
+require 'cli-talky-talk'
+
+extend CLITalkyTalk::ClassMethods
+
+speak
