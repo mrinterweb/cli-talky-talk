@@ -1,6 +1,14 @@
 # Cli::Talky::Talk
 
-TODO: Write a gem description
+Ever find yourself checking the terminal to see if the last command you ran is finished? I do all the time so I wrote cli-talky-talk.
+
+## Usage
+
+cli-talky-talk is very easy to use. All you need to do is add `&& speak` at the end of a long running terminal command. When the command is done your computer will address you with a random message letting you know that the work is finished.
+
+```
+> <some terminal command that will take a while> && speak
+```
 
 ## Installation
 
@@ -17,10 +25,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install cli-talky-talk
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
