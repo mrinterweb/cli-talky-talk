@@ -12,6 +12,12 @@ cli-talky-talk is very easy to use. All you need to do is add `&& speak` at the 
 > <some terminal command that will take a while> && speak
 ```
 
+For all options:
+
+```
+speak --help
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
