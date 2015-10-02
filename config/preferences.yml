@@ -1,4 +1,5 @@
 # This file is used with the cli-talky-talk gem
+# Some of the words in segments are misspelled intentionally to make them sound more accurate when pronounced.
 options:
   voice:
     whitelist:
