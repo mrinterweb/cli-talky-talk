@@ -9,7 +9,7 @@ This currently only works on OS X. I'll be able to add Linux support soon. I jus
 cli-talky-talk is very easy to use. All you need to do is add `&& speak` at the end of a long running terminal command. When the command is done your computer will address you with a random message letting you know that the work is finished.
 
 ```
-> <some terminal command that will take a while> && speak
+$ <some terminal command that will take a while> && speak
 ```
 
 For all options:
@@ -20,19 +20,17 @@ speak --help
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'cli-talky-talk'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it with ruby gems:
 
     $ gem install cli-talky-talk
+
+Then if you want to customize it to your liking:
+
+```
+$ speak --install
+```
+
+This command copies the default preference file to your ~/.cli-talky-talk.yml
 
 ## Contributing
 
