@@ -1,0 +1,50 @@
+
+options:
+  voice:
+    whitelist:
+    blacklist:
+      - Trinoids
+      - Good News
+      - Bad News
+      - Bubbles
+      - Veena
+      - Boing
+      - Pipe Organ
+      - Albert
+      - Tessa
+      - Bahh
+      - Deranged
+      - Hysterical
+      - Whisper
+      - Bells
+segments:
+  greetings:
+    - ahoy
+    - greeting
+    - saalutations
+    - waazame
+    - bleep booop
+    - exceslior
+    - land hoe
+    - hail
+  
+  names:
+    - WHOAMI
+    - Govna
+    - captain
+    - boss
+    - cheef
+    - over loard
+    - dragon commander
+    - your excellence
+    - exhaulted one
+  
+  statuses:
+    - all done here
+    - works done
+    - bingo!
+    - hazaa
+    - flip Yeah
+    - get back to work
+    - all systems go
+  
