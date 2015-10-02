@@ -4,6 +4,7 @@ require 'optparse'
 require 'ostruct'
 require 'bundler/setup'
 require 'cli-talky-talk'
+require 'fileutils'
 
 options = OpenStruct.new
 
@@ -26,7 +27,31 @@ OptionParser.new do |opts|
     options.voice = voice
   end
 
+  opts.on('--install') do
+    source_path = File.expand_path('../../', __FILE__) + '/config/preferences.yml'
+    target_path = Dir.home + '/.cli-talky-talk.yml'
+    FileUtils.cp source_path, target_path
+    puts "Preferences file copied to: #{target_path}"
+    exit 0
+  end
+
+  opts.on('--list-voices') do
+    talker = CliTalkyTalk.new
+    blacklist = talker.preferences['options']['voice']['blacklist'] || []
+    puts talker.voices - blacklist
+    if blacklist
+      puts "-" * 30
+      puts "blacklisted: \n#{blacklist}"
+    end
+    exit 0
+  end
+
 end.parse!
 
 talker = CliTalkyTalk.new(options)
-talker.speak
+begin
+  talker.speak
+rescue RuntimeError => e
+  puts "Error: #{e}"
+  exit 1
+end

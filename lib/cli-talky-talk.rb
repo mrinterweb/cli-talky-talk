@@ -5,20 +5,23 @@ class CliTalkyTalk
 
   attr_accessor :options, :preferences
 
-  def initialize(options)
-    begin
-      default_path = File.expand_path('../../', __FILE__) + '/config/preferences.yml'
-      if File.exist? default_path
-        @preferences = YAML.load_file(default_path)
-      else
-        exit "unable to load preferences"
-      end
-    rescue Psych::SyntaxError => e
-      exit "There was an error parsing the config file: #{e}"
-    end
+  def initialize(options=nil)
     @options = options || OpenStruct.new
+    begin
+      personal_pref_path = Dir.home + '/.cli-talky-talk.yml'
+      default_path = File.expand_path('../../', __FILE__) + '/config/preferences.yml'
+      [personal_pref_path, default_path].each do |path|
+        if File.exist? path
+          @preferences = YAML.load_file(path)
+          log "using preferences from: #{path}"
+          break
+        end
+      end
+      raise "unable to load preferences" unless @preferences 
+    rescue Psych::SyntaxError => e
+      raise "There was an error parsing the config file: #{e}"
+    end
   end
-
 
   def rand(arr)
     arr.sample
@@ -61,11 +64,18 @@ class CliTalkyTalk
     elsif whitelist.kind_of?(Array)
       rand whitelist
     else
-      voices = `say -v \?`.split("\n").select { |v| v =~ /en_/ }.map { |v| v.gsub(/\s+en_[A-Z]{2}.*$/,"")}
-      voices -= blacklist if blacklist.kind_of?(Array)
-      rand voices
+      avail_voices = voices - blacklist if blacklist.kind_of?(Array)
+      rand avail_voices
     end
     log "voice: #{voice}"
     voice
+  end
+
+  def voices
+    `say -v \?`.split("\n").select { |v| v =~ /en_/ }.map { |v| v.gsub(/\s+en_[A-Z]{2}.*$/,"")}
+  end
+
+  def self.voices
+    self.new.voices
   end
 end
